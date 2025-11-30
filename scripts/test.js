@@ -1,8 +1,8 @@
 const hre = require("hardhat");
 
-const ACCCOUNT_ADDRESS = "0x56639dB16Ac50A89228026e42a316B30179A5376";
-const EP_ADDRESS = "0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44";
-const PM_ADDRESS = "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f";
+const ACCCOUNT_ADDRESS = "0xef1b43bfc772489e29e9937cb722bdbed34d9e93";
+const EP_ADDRESS = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
+const PM_ADDRESS = "0xBFFF76aa2a41eC15017945164b9CE9C635CE5175";
 
 async function main() {
 	const account = await hre.ethers.getContractAt("Account", ACCCOUNT_ADDRESS);
