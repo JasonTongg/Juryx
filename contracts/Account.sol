@@ -21,7 +21,7 @@ contract Account is IAccount {
         threshold = _threshold;
         entryPoint = _entryPoint;
 
-        for(uint256 i = 0; i < _owners.length; i++) {
+        for (uint256 i = 0; i < _owners.length; i++) {
             address owner = _owners[i];
             require(owner != address(0), "Invalid owner address");
             require(!isOwner[owner], "Duplicate owner");
@@ -31,14 +31,17 @@ contract Account is IAccount {
         }
     }
 
-    function validateUserOp(UserOperation calldata userOp, bytes32 userOpHash, uint256) external view returns (uint256 validationData) {
+    function validateUserOp(UserOperation calldata userOp, bytes32 userOpHash, uint256)
+        external
+        view
+        returns (uint256 validationData)
+    {
         _validateSignatures(userOpHash, userOp.signature);
         return 0;
     }
 
-
     function _validateSignatures(bytes32 userOpHash, bytes calldata signatureData) internal view {
-    require(msg.sender == entryPoint, "only entrypoint");
+        require(msg.sender == entryPoint, "only entrypoint");
         bytes[] memory sigs = abi.decode(signatureData, (bytes[]));
 
         uint256 valid;
@@ -62,7 +65,7 @@ contract Account is IAccount {
         require(msg.sender == entryPoint, "not entry point");
         executeCount++;
 
-        (bool success, ) = to.call{value: value}(data);
+        (bool success,) = to.call{value: value}(data);
         require(success, "execute failed");
     }
 
@@ -72,13 +75,21 @@ contract Account is IAccount {
 }
 
 contract AccountFactory {
-    function createAccount(address[] memory _owners, uint256 _threshold, address _entryPoint) external returns (address) {
+    event AccountCreated(address account, address[] owners, uint256 threshold);
+
+    function createAccount(address[] memory _owners, uint256 _threshold, address _entryPoint)
+        external
+        returns (address)
+    {
         bytes32 salt = keccak256(abi.encode(_owners, _threshold));
-        bytes memory bytecode = abi.encodePacked(type(Account).creationCode, abi.encode(_owners, _threshold, _entryPoint));
+        bytes memory bytecode =
+            abi.encodePacked(type(Account).creationCode, abi.encode(_owners, _threshold, _entryPoint));
 
         address addr = Create2.computeAddress(salt, keccak256(bytecode));
 
-        if(addr.code.length > 0) {
+        emit AccountCreated(addr, _owners, _threshold);
+
+        if (addr.code.length > 0) {
             return addr;
         }
 

@@ -7,7 +7,7 @@ module.exports = {
 	networks: {
 		sepolia: {
 			url: process.env.RPC_URL,
-			accounts: [process.env.PRIVATE_KEY, process.env.PRIVATE_KEY2, process.env.PRIVATE_KEY3, process.env.PRIVATE_KEY4]
+			accounts: [process.env.PRIVATE_KEY, process.env.PRIVATE_KEY2]
 		}
 	},
 	solidity: {
