@@ -4,7 +4,7 @@
 
 This repository contains the core smart contract logic for Juryx, a decentralized multi-signature wallet platform. Built with Hardhat, these contracts facilitate the creation, management, and execution of multi-signer transactions on-chain.
 
-- **Frontend using Nextjs:** [JUSD Frontend](https://github.com/JasonTongg/Juryx_Frontend)
+- **Frontend using Nextjs:** [JURYX Frontend](https://github.com/JasonTongg/Juryx_Frontend)
 - **Framework:** Hardhat
 - **Network:** Sepolia Testnet (Primary)
 
