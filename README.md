@@ -1,4 +1,4 @@
-<img width="1050" height="718" alt="image" src="https://github.com/user-attachments/assets/4c1ed875-8e01-4de1-a6f7-5960a769ae48" />
+<img width="1290" height="722" alt="image" src="https://github.com/user-attachments/assets/cbe84b17-2e4c-41f9-bb3c-b12928ff8d98" />
 
 # Juryx
 
